@@ -19,4 +19,4 @@ const collabSchema = new Schema(
 );
 
 const collaboration = mongoose.model('collaboration' , collabSchema);
-module.exports = {collaboration};
+export default collaboration;

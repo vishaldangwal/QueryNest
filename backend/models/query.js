@@ -20,4 +20,4 @@ const querySchema = new Schema(
 );
 
 const query = mongoose.model('query' , querySchema);
-module.exports = {query};
+export default query;
