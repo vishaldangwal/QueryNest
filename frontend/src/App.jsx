@@ -37,9 +37,11 @@ import PopularWriters from './components/PopularWriters';
 import Newsletter from './components/Newsletter';
 import ProfilePage from './pages/ProfilePage';
 import AboutUs from './pages/AboutUs';
+import Signup from './pages/Signup'
 
 const Home = () => (
   <>
+  
     <Hero />
     <FeaturedBlogs />
     <Categories />
@@ -56,6 +58,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/about" element={<AboutUs />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
       <Footer />
     </Router>

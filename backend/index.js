@@ -4,9 +4,11 @@ import dotenv from 'dotenv';
 import userRouter from "./Route/user.js"
 import queryRouter from "./Route/query.js"
 import blogRouter from "./Route/blog.js"
+import cors from "cors";
 dotenv.config();
 const app = express();
 const port = process.env.PORT;
+app.use(cors());
 app.use(express.json());
 app.use("/api/v1/user", userRouter)
 app.use("/api/v1/query", queryRouter)

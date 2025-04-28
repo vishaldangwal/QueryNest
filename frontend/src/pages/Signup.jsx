@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { FaUser, FaEnvelope, FaLock, FaGoogle, FaGithub } from 'react-icons/fa';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { FaUser, FaEnvelope, FaLock, FaGoogle, FaGithub } from "react-icons/fa";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
@@ -16,30 +16,52 @@ const Signup = () => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
   const validate = () => {
     const newErrors = {};
-    if (!formData.username.trim()) newErrors.username = 'Username is required';
-    if (!formData.email.trim()) newErrors.email = 'Email is required';
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = 'Email is invalid';
-    if (!formData.password) newErrors.password = 'Password is required';
-    else if (formData.password.length < 6) newErrors.password = 'Password must be at least 6 characters';
-    if (formData.password !== formData.confirmPassword) newErrors.confirmPassword = 'Passwords do not match';
-    
+    if (!formData.username.trim()) newErrors.username = "Username is required";
+    if (!formData.email.trim()) newErrors.email = "Email is required";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
+      newErrors.email = "Email is invalid";
+    if (!formData.password) newErrors.password = "Password is required";
+    else if (formData.password.length < 6)
+      newErrors.password = "Password must be at least 6 characters";
+    if (formData.password !== formData.confirmPassword)
+      newErrors.confirmPassword = "Passwords do not match";
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validate()) {
-      // Here you would typically call your API to register the user
-      console.log('Form submitted:', formData);
-      // Redirect to login or home page after successful signup
-      navigate('/');
+      try {
+        console.log(formData);
+        const response = await fetch("http://localhost:3000/api/v1/user/signup", {
+          // replace with your backend URL
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+          console.log("Signup successful:", data);
+          navigate("/login"); // redirect on success
+        } else {
+          console.error("Signup error:", data.message);
+          setErrors({ general: data.message }); // show general error
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        setErrors({ general: "Something went wrong. Please try again." });
+      }
     }
   };
 
@@ -50,8 +72,11 @@ const Signup = () => {
           Create your account
         </h2>
         <p className="mt-2 text-center text-sm text-gray-600">
-          Already have an account?{' '}
-          <Link to="/login" className="font-medium text-indigo-600 hover:text-indigo-500">
+          Already have an account?{" "}
+          <Link
+            to="/login"
+            className="font-medium text-indigo-600 hover:text-indigo-500"
+          >
             Sign in
           </Link>
         </p>
@@ -61,7 +86,10 @@ const Signup = () => {
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="username" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="username"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Username
               </label>
               <div className="mt-1 relative rounded-md shadow-sm">
@@ -74,15 +102,22 @@ const Signup = () => {
                   type="text"
                   value={formData.username}
                   onChange={handleChange}
-                  className={`block w-full pl-10 pr-3 py-2 border ${errors.username ? 'border-red-300' : 'border-gray-300'} rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}
+                  className={`block w-full pl-10 pr-3 py-2 border ${
+                    errors.username ? "border-red-300" : "border-gray-300"
+                  } rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}
                   placeholder="johndoe"
                 />
               </div>
-              {errors.username && <p className="mt-2 text-sm text-red-600">{errors.username}</p>}
+              {errors.username && (
+                <p className="mt-2 text-sm text-red-600">{errors.username}</p>
+              )}
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Email address
               </label>
               <div className="mt-1 relative rounded-md shadow-sm">
@@ -95,15 +130,22 @@ const Signup = () => {
                   type="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className={`block w-full pl-10 pr-3 py-2 border ${errors.email ? 'border-red-300' : 'border-gray-300'} rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}
+                  className={`block w-full pl-10 pr-3 py-2 border ${
+                    errors.email ? "border-red-300" : "border-gray-300"
+                  } rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}
                   placeholder="you@example.com"
                 />
               </div>
-              {errors.email && <p className="mt-2 text-sm text-red-600">{errors.email}</p>}
+              {errors.email && (
+                <p className="mt-2 text-sm text-red-600">{errors.email}</p>
+              )}
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Password
               </label>
               <div className="mt-1 relative rounded-md shadow-sm">
@@ -116,15 +158,22 @@ const Signup = () => {
                   type="password"
                   value={formData.password}
                   onChange={handleChange}
-                  className={`block w-full pl-10 pr-3 py-2 border ${errors.password ? 'border-red-300' : 'border-gray-300'} rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}
+                  className={`block w-full pl-10 pr-3 py-2 border ${
+                    errors.password ? "border-red-300" : "border-gray-300"
+                  } rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}
                   placeholder="••••••••"
                 />
               </div>
-              {errors.password && <p className="mt-2 text-sm text-red-600">{errors.password}</p>}
+              {errors.password && (
+                <p className="mt-2 text-sm text-red-600">{errors.password}</p>
+              )}
             </div>
 
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="confirmPassword"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Confirm Password
               </label>
               <div className="mt-1 relative rounded-md shadow-sm">
@@ -137,11 +186,19 @@ const Signup = () => {
                   type="password"
                   value={formData.confirmPassword}
                   onChange={handleChange}
-                  className={`block w-full pl-10 pr-3 py-2 border ${errors.confirmPassword ? 'border-red-300' : 'border-gray-300'} rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}
+                  className={`block w-full pl-10 pr-3 py-2 border ${
+                    errors.confirmPassword
+                      ? "border-red-300"
+                      : "border-gray-300"
+                  } rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}
                   placeholder="••••••••"
                 />
               </div>
-              {errors.confirmPassword && <p className="mt-2 text-sm text-red-600">{errors.confirmPassword}</p>}
+              {errors.confirmPassword && (
+                <p className="mt-2 text-sm text-red-600">
+                  {errors.confirmPassword}
+                </p>
+              )}
             </div>
 
             <div>
