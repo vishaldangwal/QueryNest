@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { FaGithub, FaTwitter, FaLinkedin, FaEnvelope, FaEdit, FaQuestionCircle, FaReply, FaComment } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
@@ -233,7 +233,7 @@ const ProfilePage = () => {
           <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-white/10 rounded-full"></div>
           <div className="relative">
             <h2 className="text-2xl font-bold text-white mb-8 text-center">
-              Let's Connect
+              Lets Connect
             </h2>
             <div className="flex justify-center space-x-8">
               {[

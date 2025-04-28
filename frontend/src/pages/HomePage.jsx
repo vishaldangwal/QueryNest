@@ -1,4 +1,3 @@
-import React from "react";
 import Navbar from "../components/Navbar"; // Correct path
 import Hero from "../components/Hero"; // Correct path
 import FeaturedBlogs from "../components/FeaturedBlogs"; // Correct path
