@@ -15,6 +15,10 @@ const userSchema = new Schema(
     queries: [{ type: mongoose.Schema.Types.ObjectId, ref: "Query" }],
     blogs: [{ type: mongoose.Schema.Types.ObjectId, ref: "Blog" }],
     joinedAt: { type: Date, default: Date.now },
+    questions:{type:Number,default: 0},
+    answers:{type:Number,default: 0},
+    contribution:{type:Number,default: 0},
+    reputation:{type:Number,default: 0}
   },
   { timestamps: true }
 );
