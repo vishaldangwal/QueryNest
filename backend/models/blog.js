@@ -19,7 +19,7 @@ const blogSchema = new Schema(
     createdAt: { type: Date, default: Date.now },
     category: {
       type: String,
-      enum: ['development', 'design', 'performance', 'general'],
+      enum: ['Development', 'Design', 'Performance', 'General'],
       required: true,
     },
   },
