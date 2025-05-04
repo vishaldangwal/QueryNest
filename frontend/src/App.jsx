@@ -11,6 +11,7 @@ import AboutUs from './pages/AboutUs';
 import Signup from './pages/SignUp';
 import Blogs from './pages/blogs';
 import Cate from './pages/Cate';
+import Login from './pages/Login';
 
 
 
@@ -34,6 +35,7 @@ const App = () => {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path='/signup' element={<Signup/>} />
+        <Route path='/login' element={<Login/>} />
         <Route path='/blogs' element={<Blogs/>} />
         <Route path='/categories' element={<Cate/>} />
       </Routes>
