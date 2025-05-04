@@ -1,12 +1,13 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
+
 const blogSchema = new Schema(
   {
     title: { type: String, required: true },
     content: { type: String, required: true },
     author: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-    tags: [{ type: String }], 
-    likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }], 
+    tags: [{ type: String }],
+    likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
     comments: [
       {
         user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
@@ -14,11 +15,16 @@ const blogSchema = new Schema(
         createdAt: { type: Date, default: Date.now },
       },
     ],
-    image: { type: String, default: "" }, 
+    image: { type: String, default: "" },
     createdAt: { type: Date, default: Date.now },
+    category: {
+      type: String,
+      enum: ['development', 'design', 'performance', 'general'],
+      required: true,
+    },
   },
   { timestamps: true }
 );
 
-const blog = mongoose.model("blog" , blogSchema);
-export default blog;
+const Blog = mongoose.model("Blog", blogSchema);
+export default Blog;

@@ -4,17 +4,26 @@ import authenticateToken from '../Middlewares/auth.js';
 
 const blogRouter = express.Router();
 
-
+// Create a new blog
 blogRouter.post('/', authenticateToken, async (req, res) => {
   try {
-    const { title, content, tags, image } = req.body;
+    const { title, content, tags, image, category } = req.body;
+
+    // Validate the category
+    const validCategories = ['development', 'design', 'performance', 'general'];
+    if (!validCategories.includes(category)) {
+      return res.status(400).json({ message: 'Invalid category' });
+    }
+
     const newBlog = new Blog({
       title,
       content,
       author: req.user.id,
       tags,
-      image
+      image,
+      category // Add category
     });
+
     await newBlog.save();
     res.status(201).json(newBlog);
   } catch (error) {
@@ -22,6 +31,7 @@ blogRouter.post('/', authenticateToken, async (req, res) => {
   }
 });
 
+// Get all blogs
 blogRouter.get('/', async (req, res) => {
   try {
     const blogs = await Blog.find()
@@ -33,6 +43,7 @@ blogRouter.get('/', async (req, res) => {
   }
 });
 
+// Get a specific blog by ID
 blogRouter.get('/:id', async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id)
@@ -45,6 +56,7 @@ blogRouter.get('/:id', async (req, res) => {
   }
 });
 
+// Like or unlike a blog
 blogRouter.post('/:id/like', authenticateToken, async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id);
@@ -66,7 +78,7 @@ blogRouter.post('/:id/like', authenticateToken, async (req, res) => {
   }
 });
 
-
+// Add a comment to a blog
 blogRouter.post('/:id/comment', authenticateToken, async (req, res) => {
   try {
     const { text } = req.body;
@@ -81,7 +93,7 @@ blogRouter.post('/:id/comment', authenticateToken, async (req, res) => {
   }
 });
 
-
+// Delete a blog
 blogRouter.delete('/:id', authenticateToken, async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id);
@@ -98,4 +110,3 @@ blogRouter.delete('/:id', authenticateToken, async (req, res) => {
 });
 
 export default blogRouter;
-
