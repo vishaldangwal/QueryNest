@@ -42,24 +42,45 @@ userRouter.post('/signup', async (req, res) => {
 });
 
 userRouter.post('/login', async (req, res) => {
-  const { email, password } = req.body;
+  try {
+    const { usernameOrEmail, password } = req.body;
 
-  const foundUser = await user.findOne({ email });
-  if (!foundUser) {
-    return res.status(400).json({ message: 'User not found' });
+    // Find the user by email
+    const foundUser = await user.findOne({ email: usernameOrEmail });
+
+
+    if (!foundUser) {
+      return res.status(400).json({ message: 'Invalid email or password' });
+    }
+
+    // Compare the password
+    const isMatch = await bcrypt.compare(password, foundUser.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Invalid email or password' });
+    }
+
+    // Generate JWT token
+    const token = jwt.sign(
+      { id: foundUser._id, username: foundUser.username },
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' }
+    );
+
+    // Respond with token and user info (optional)
+    res.status(200).json({
+      message: 'Login successful',
+      token,
+      user: {
+        id: foundUser._id,
+        username: foundUser.username,
+        email: foundUser.email,
+      },
+    });
+  } catch (error) {
+    console.error('Login error:', error);
+    res.status(500).json({ message: 'Server error' });
   }
-
-  const isMatch = await bcrypt.compare(password, foundUser.password);
-  if (!isMatch) {
-    return res.status(400).json({ message: 'Invalid credentials' });
-  }
-
-
-  const token = jwt.sign({ id: foundUser._id, username: foundUser.username }, process.env.JWT_SECRET, { expiresIn: '1h' });
-
-  res.status(200).json({ message: 'Login successful', token });
 });
-
 userRouter.put('/update', authenticateToken, async (req, res) => {
   const { userId, username, bio, profilePic, github, leetcode, linkedin } = req.body;
 
