@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 
 const ProfilePage = () => {
   // User data with enhanced details
+  
   const user = {
     name: 'John Doe',
     bio: 'Senior Full-stack Engineer | React Specialist | Open Source Contributor | Building scalable web applications since 2018',
