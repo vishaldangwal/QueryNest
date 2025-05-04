@@ -1,4 +1,3 @@
-import React from 'react';
 import { FaGithub, FaTwitter, FaLinkedin, FaEnvelope, FaCode, FaUsers, FaBook, FaRocket } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
@@ -125,7 +124,7 @@ const AboutUs = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-1">Collective Intelligence</h3>
-                      <p className="text-gray-600 text-sm">Harness your team's combined expertise in a searchable knowledge base</p>
+                      <p className="text-gray-600 text-sm">Harness your teams combined expertise in a searchable knowledge base</p>
                     </div>
                   </div>
                   <div className="flex items-start">
@@ -143,7 +142,7 @@ const AboutUs = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-1">Continuous Learning</h3>
-                      <p className="text-gray-600 text-sm">Discover optimization patterns from your team's collective work</p>
+                      <p className="text-gray-600 text-sm">Discover optimization patterns from your teams collective work</p>
                     </div>
                   </div>
                 </div>
@@ -163,7 +162,7 @@ const AboutUs = () => {
                         <span className="text-purple-400">SELECT</span> users.id, users.name<br />
                         <span className="text-purple-400">FROM</span> users<br />
                         <span className="text-purple-400">JOIN</span> orders <span className="text-purple-400">ON</span> users.id = orders.user_id<br />
-                        <span className="text-purple-400">WHERE</span> orders.created_at {'>'} NOW() - INTERVAL <span className="text-yellow-400">'30 days'</span><br />
+                        <span className="text-purple-400">WHERE</span> orders.created_at {'>'} NOW() - INTERVAL <span className="text-yellow-400">30 days</span><br />
                         <span className="text-gray-500">-- Active users with recent orders</span>
                       </code>
                     </div>
@@ -343,9 +342,9 @@ const AboutUs = () => {
             <div className="absolute -top-20 -right-20 w-64 h-64 bg-white/10 rounded-full"></div>
             <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-white/10 rounded-full"></div>
             <div className="relative max-w-2xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to transform your team's workflow?</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to transform your teams workflow?</h2>
               <p className="text-purple-100 text-lg mb-8">
-                Join the waitlist for early access to QueryNest's collaborative query platform.
+                Join the waitlist for early access to QueryNests collaborative query platform.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button className="bg-white text-purple-600 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors duration-200 shadow-lg">
@@ -367,140 +366,5 @@ const AboutUs = () => {
 export default AboutUs;
 
 
-
-
-// // import React from 'react';
-// // import { FaGithub, FaTwitter, FaLinkedin, FaEnvelope } from 'react-icons/fa';
-
-// // const AboutUs = () => {
-// //   // Sample team data
-// //   const team = [
-// //     {
-// //       id: 1,
-// //       name: 'Vansh Saraf',
-// //       role: 'Co-Founder & CEO',
-// //       bio: 'Full-stack developer with 5+ years of experience in React and Node.js.',
-// //       image: 'https://via.placeholder.com/150',
-// //       socialLinks: {
-// //         github: 'https://github.com/johndoe',
-// //         twitter: 'https://twitter.com/johndoe',
-// //         linkedin: 'https://linkedin.com/in/johndoe',
-// //         email: 'mailto:johndoe@example.com',
-// //       },
-// //     },
-// //     {
-// //       id: 2,
-// //       name: 'Jane Smith',
-// //       role: 'Co-Founder & CTO',
-// //       bio: 'Frontend specialist passionate about building responsive and accessible UIs.',
-// //       image: 'https://via.placeholder.com/150',
-// //       socialLinks: {
-// //         github: 'https://github.com/janesmith',
-// //         twitter: 'https://twitter.com/janesmith',
-// //         linkedin: 'https://linkedin.com/in/janesmith',
-// //         email: 'mailto:janesmith@example.com',
-// //       },
-// //     },
-// //     {
-// //       id: 3,
-// //       name: 'Alice Johnson',
-// //       role: 'Lead Backend Engineer',
-// //       bio: 'Backend engineer with expertise in Python, Django, and database optimization.',
-// //       image: 'https://via.placeholder.com/150',
-// //       socialLinks: {
-// //         github: 'https://github.com/alicejohnson',
-// //         twitter: 'https://twitter.com/alicejohnson',
-// //         linkedin: 'https://linkedin.com/in/alicejohnson',
-// //         email: 'mailto:alicejohnson@example.com',
-// //       },
-// //     },
-// //   ];
-
-// //   return (
-// //     <div className="min-h-screen bg-gradient-to-r from-[#f7f7f7] to-[#eaeaea] py-12">
-// //       <div className="container mx-auto px-4">
-// //         {/* Hero Section */}
-// //         <div className="text-center mb-16">
-// //           <h1 className="text-5xl font-bold text-[#333] mb-4">About Us</h1>
-// //           <p className="text-[#555] text-lg max-w-2xl mx-auto">
-// //             At QueryNest, we are passionate about helping developers find answers to their coding questions quickly and efficiently. Our mission is to create a community-driven platform that empowers developers to learn, share, and grow together.
-// //           </p>
-// //         </div>
-
-// //         {/* Mission Section */}
-// //         <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-lg p-8 mb-16">
-// //           <h2 className="text-3xl font-bold text-[#333] mb-6">Our Mission</h2>
-// //           <p className="text-[#555] text-lg mb-6">
-// //             Our mission is to provide a platform where developers can collaborate, share knowledge, and solve problems together. We believe in the power of community and strive to create a space where everyone feels welcome and supported.
-// //           </p>
-// //           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-// //             <div className="bg-white/90 backdrop-blur-md p-6 rounded-lg hover:scale-105 transition-transform duration-300 shadow-md">
-// //               <h3 className="text-xl font-bold text-[#333] mb-3">Collaborate</h3>
-// //               <p className="text-[#555]">Work together to solve problems and share knowledge.</p>
-// //             </div>
-// //             <div className="bg-white/90 backdrop-blur-md p-6 rounded-lg hover:scale-105 transition-transform duration-300 shadow-md">
-// //               <h3 className="text-xl font-bold text-[#333] mb-3">Learn</h3>
-// //               <p className="text-[#555]">Grow your skills by learning from others in the community.</p>
-// //             </div>
-// //             <div className="bg-white/90 backdrop-blur-md p-6 rounded-lg hover:scale-105 transition-transform duration-300 shadow-md">
-// //               <h3 className="text-xl font-bold text-[#333] mb-3">Share</h3>
-// //               <p className="text-[#555]">Contribute your knowledge and help others succeed.</p>
-// //             </div>
-// //           </div>
-// //         </div>
-
-// //         {/* Team Section */}
-// //         <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-lg p-8">
-// //           <h2 className="text-3xl font-bold text-[#333] mb-8">Meet Our Team</h2>
-// //           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-// //             {team.map((member) => (
-// //               <div
-// //                 key={member.id}
-// //                 className="bg-white/90 backdrop-blur-md rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300 shadow-md"
-// //               >
-// //                 <img
-// //                   src={member.image}
-// //                   alt={member.name}
-// //                   className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-[#6a11cb]"
-// //                 />
-// //                 <h3 className="text-2xl font-bold text-[#333] mb-2">{member.name}</h3>
-// //                 <p className="text-[#555] mb-4">{member.role}</p>
-// //                 <p className="text-[#555] text-sm mb-6">{member.bio}</p>
-// //                 <div className="flex justify-center space-x-4">
-// //                   <a
-// //                     href={member.socialLinks.github}
-// //                     className="text-[#555] hover:text-[#6a11cb] transition-colors duration-200"
-// //                   >
-// //                     <FaGithub size={24} />
-// //                   </a>
-// //                   <a
-// //                     href={member.socialLinks.twitter}
-// //                     className="text-[#555] hover:text-[#6a11cb] transition-colors duration-200"
-// //                   >
-// //                     <FaTwitter size={24} />
-// //                   </a>
-// //                   <a
-// //                     href={member.socialLinks.linkedin}
-// //                     className="text-[#555] hover:text-[#6a11cb] transition-colors duration-200"
-// //                   >
-// //                     <FaLinkedin size={24} />
-// //                   </a>
-// //                   <a
-// //                     href={member.socialLinks.email}
-// //                     className="text-[#555] hover:text-[#6a11cb] transition-colors duration-200"
-// //                   >
-// //                     <FaEnvelope size={24} />
-// //                   </a>
-// //                 </div>
-// //               </div>
-// //             ))}
-// //           </div>
-// //         </div>
-// //       </div>
-// //     </div>
-// //   );
-// // };
-
-// // export default AboutUs;
 
 
