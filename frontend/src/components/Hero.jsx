@@ -55,7 +55,7 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <div className="relative bg-gray-900 overflow-hidden">
+    <div className="relative bg-gray-900 overflow-hidden  ">
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-indigo-900 to-purple-900 opacity-75"></div>
 

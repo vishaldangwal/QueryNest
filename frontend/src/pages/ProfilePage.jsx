@@ -61,7 +61,7 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-[#f5f7ff]">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-[#f5f7ff] pt-20">
       {/* Floating background elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         {[...Array(8)].map((_, i) => (
