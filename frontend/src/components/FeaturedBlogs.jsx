@@ -8,10 +8,11 @@ const FeaturedBlogs = () => {
       title: "Tips for Writing Better Code",
       description:
         "Learn how to write clean and efficient code with these 10 tips.",
-      author: "John Doe",
+      author: "Vansh Maurya",
       date: "Oct 10, 2023",
       readTime: "5 min",
-      image: "https://source.unsplash.com/400x250/?coding,programming",
+      image:
+        "https://images.unsplash.com/photo-1556740749-887f6717d7e4?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDE1fHxjb2RpbmclMjBwcm9ncmFtbWluZ3xlbnwwfHx8fDE2Nzk2OTg5NTI&ixlib=rb-1.2.1&q=80&w=1080",
       category: "Technology",
     },
     {
@@ -19,10 +20,11 @@ const FeaturedBlogs = () => {
       title: "The Art of Productivity",
       description:
         "Discover the secrets to staying productive and achieving your goals.",
-      author: "Jane Smith",
+      author: "Ram Kumar",
       date: "Oct 12, 2023",
       readTime: "7 min",
-      image: "https://source.unsplash.com/400x250/?productivity,work",
+      image:
+        "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       category: "Lifestyle",
     },
     {
@@ -30,10 +32,11 @@ const FeaturedBlogs = () => {
       title: "Healthy Eating Habits",
       description:
         "Transform your diet with these simple and effective healthy eating tips.",
-      author: "Alice Johnson",
+      author: "Sanchit Jain",
       date: "Oct 15, 2023",
       readTime: "6 min",
-      image: "https://source.unsplash.com/400x250/?health,food",
+      image:
+        "https://www.nuutjob.com/cdn/shop/articles/healthy-eating-habits-355940.jpg?v=1685204096",
       category: "Health",
     },
   ];

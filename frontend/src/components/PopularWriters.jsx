@@ -1,31 +1,34 @@
-import React from 'react';
+import React from "react";
 
 const PopularWriters = () => {
-  // Sample data for popular writers (only 3 writers)
+  // Sample data for popular writers (with real Unsplash images)
   const writers = [
     {
       id: 1,
-      name: 'John Doe',
-      bio: 'Full-stack developer with 5+ years of experience in React and Node.js.',
-      image: 'https://via.placeholder.com/150',
-      profileLink: '/writers/johndoe',
-      expertise: ['React', 'Node.js', 'JavaScript'],
+      name: "Vansh Maurya",
+      bio: "Full-stack developer with 5+ years of experience in React and Node.js.",
+      image:
+        "https://avatars.githubusercontent.com/u/72353067?v=4",
+      profileLink: "/writers/vanshmaurya",
+      expertise: ["React", "Node.js", "JavaScript"],
     },
     {
       id: 2,
-      name: 'Jane Smith',
-      bio: 'Frontend specialist passionate about building responsive and accessible UIs.',
-      image: 'https://via.placeholder.com/150',
-      profileLink: '/writers/janesmith',
-      expertise: ['HTML', 'CSS', 'JavaScript'],
+      name: "Vishal Dangwal",
+      bio: "Frontend specialist passionate about building responsive and accessible UIs.",
+      image:
+        "https://avatars.githubusercontent.com/u/148211883?s=400&u=c817395005ab9fc34251d598a47cb4e74f054920&v=4",
+      profileLink: "/writers/vishaldangwal",
+      expertise: ["HTML", "CSS", "JavaScript"],
     },
     {
       id: 3,
-      name: 'Alice Johnson',
-      bio: 'Backend engineer with expertise in Python, Django, and database optimization.',
-      image: 'https://via.placeholder.com/150',
-      profileLink: '/writers/alicejohnson',
-      expertise: ['Python', 'Django', 'SQL'],
+      name: "Vansh Saraf",
+      bio: "Backend engineer with expertise in Python, Django, and database optimization.",
+      image:
+        "https://media.licdn.com/dms/image/v2/D4D03AQFcKx0-YiHvWA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1698509160876?e=1752105600&v=beta&t=qoeN95RcNgA-wc2XzNmK4VLfDLd1Fm6C0eE1O9WHzlU",
+      profileLink: "/writers/alicejohnson",
+      expertise: ["Python", "Django", "SQL"],
     },
   ];
 
@@ -51,7 +54,7 @@ const PopularWriters = () => {
               {/* Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-500"></div>
 
-              {/* Static Content (Visible by Default) */}
+              {/* Static Content */}
               <div className="p-6">
                 <h3 className="text-2xl font-bold mb-2 text-[#1a1a1a]">
                   {writer.name}

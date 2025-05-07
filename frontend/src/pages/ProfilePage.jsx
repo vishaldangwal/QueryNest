@@ -1,14 +1,13 @@
-
 import { FaGithub, FaTwitter, FaLinkedin, FaEnvelope, FaEdit, FaQuestionCircle, FaReply, FaComment } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const ProfilePage = () => {
   // User data with enhanced details
-  
+
   const user = {
-    name: 'John Doe',
-    bio: 'Senior Full-stack Engineer | React Specialist | Open Source Contributor | Building scalable web applications since 2018',
-    profilePicture: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80',
+    name: 'Vipin Kumar Chauhan',
+    bio: 'Full-stack Developer | React Specialist | Open Source Contributor',
+    profilePicture: 'https://avatars.githubusercontent.com/u/159447108?s=130&v=4',
     expertise: ['React', 'Node.js', 'TypeScript', 'GraphQL', 'AWS', 'Docker'],
     stats: {
       questions: 42,
@@ -17,10 +16,10 @@ const ProfilePage = () => {
       reputation: 2450,
     },
     socialLinks: {
-      github: 'https://github.com/johndoe',
-      twitter: 'https://twitter.com/johndoe',
-      linkedin: 'https://linkedin.com/in/johndoe',
-      email: 'mailto:johndoe@example.com',
+      github: 'https://github.com/vipinchauhan45',
+      twitter: 'https://twitter.com/vipinkumar',
+      linkedin: 'https://www.linkedin.com/in/vipin-kumar-chauhan-278077299/',
+      email: 'mailto:vipink.it.23@nitj.ac.in',
     },
     recentActivity: [
       {
@@ -89,7 +88,7 @@ const ProfilePage = () => {
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Profile Header */}
-        <motion.section 
+        <motion.section
           initial="hidden"
           animate="visible"
           variants={fadeIn}
@@ -97,7 +96,7 @@ const ProfilePage = () => {
           className="bg-white rounded-3xl shadow-2xl p-8 text-center relative overflow-hidden border border-gray-100"
         >
           {/* Edit Profile Button */}
-          <motion.button 
+          <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="absolute top-6 right-6 bg-gradient-to-r from-purple-600 to-blue-500 text-white p-3 rounded-full hover:shadow-lg transition-all duration-300 shadow-md"
@@ -178,7 +177,7 @@ const ProfilePage = () => {
               View All Activity →
             </button>
           </div>
-          
+
           <div className="space-y-6">
             {user.recentActivity.map((activity) => (
               <motion.div

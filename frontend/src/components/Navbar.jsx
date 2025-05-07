@@ -89,7 +89,7 @@ const Navbar = () => {
                 <button onClick={toggleDropdown} className="flex items-center text-sm text-gray-700 hover:text-indigo-600 focus:outline-none">
                   <img
                     className="h-8 w-8 rounded-full"
-                    src="https://via.placeholder.com/150"
+                    src="https://avatars.githubusercontent.com/u/159447108?s=130&v=4"
                     alt="User"
                   />
                   <span className="ml-2 font-medium">{user.username}</span>
