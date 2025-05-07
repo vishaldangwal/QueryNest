@@ -350,7 +350,6 @@ const Blogs = () => {
               {selectedBlog.category}
             </p>
             <div className="prose">
-              <p>{selectedBlog.description || "No description available."}</p>
               <p>{selectedBlog.content || "No content available."}</p>
             </div>
           </div>

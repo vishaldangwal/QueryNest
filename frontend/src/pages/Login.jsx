@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { FaUser, FaLock, FaGoogle, FaGithub } from 'react-icons/fa';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { FaUser, FaLock, FaGoogle, FaGithub } from "react-icons/fa";
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    usernameOrEmail: '',
-    password: '',
+    usernameOrEmail: "",
+    password: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -22,8 +22,8 @@ const Login = () => {
   const validate = () => {
     const newErrors = {};
     if (!formData.usernameOrEmail.trim())
-      newErrors.usernameOrEmail = 'Username or email is required';
-    if (!formData.password) newErrors.password = 'Password is required';
+      newErrors.usernameOrEmail = "Username or email is required";
+    if (!formData.password) newErrors.password = "Password is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -33,32 +33,34 @@ const Login = () => {
     if (validate()) {
       try {
         console.log(formData);
-        const response = await fetch('http://localhost:3000/api/v1/user/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
-        });
+        const response = await fetch(
+          "http://localhost:3000/api/v1/user/login",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          }
+        );
 
         const data = await response.json();
 
         if (response.ok) {
-            console.log('Login successful:', data);
-          
-            // Save token and user data to localStorage
-            localStorage.setItem('token', data.token);
-            localStorage.setItem('user', JSON.stringify(data.user));
-          
-            navigate('/'); // Redirect to home
-          }
-          else {
-          console.error('Login error:', data.message);
+          console.log("Login successful:", data);
+
+          // Save token and user data to localStorage
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("user", JSON.stringify(data.user));
+          navigate("/"); // Redirect to home
+          window.location.reload();
+        } else {
+          console.error("Login error:", data.message);
           setErrors({ general: data.message });
         }
       } catch (error) {
-        console.error('Error:', error);
-        setErrors({ general: 'Something went wrong. Please try again.' });
+        console.error("Error:", error);
+        setErrors({ general: "Something went wrong. Please try again." });
       }
     }
   };
@@ -70,8 +72,11 @@ const Login = () => {
           Sign in to your account
         </h2>
         <p className="mt-2 text-center text-sm text-gray-500">
-          Don't have an account?{' '}
-          <Link to="/signup" className="font-medium text-indigo-600 hover:text-indigo-500">
+          Don't have an account?{" "}
+          <Link
+            to="/signup"
+            className="font-medium text-indigo-600 hover:text-indigo-500"
+          >
             Sign up
           </Link>
         </p>
@@ -81,7 +86,9 @@ const Login = () => {
         <div className="bg-white py-8 px-4 shadow-lg sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
             {errors.general && (
-              <p className="text-sm text-red-600 text-center">{errors.general}</p>
+              <p className="text-sm text-red-600 text-center">
+                {errors.general}
+              </p>
             )}
 
             <div>
@@ -101,12 +108,18 @@ const Login = () => {
                   type="text"
                   value={formData.usernameOrEmail}
                   onChange={handleChange}
-                  className={`block w-full pl-10 pr-3 py-2 border ${errors.usernameOrEmail ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}
+                  className={`block w-full pl-10 pr-3 py-2 border ${
+                    errors.usernameOrEmail
+                      ? "border-red-500"
+                      : "border-gray-300"
+                  } rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}
                   placeholder="johndoe or johndoe@example.com"
                 />
               </div>
               {errors.usernameOrEmail && (
-                <p className="mt-2 text-sm text-red-600">{errors.usernameOrEmail}</p>
+                <p className="mt-2 text-sm text-red-600">
+                  {errors.usernameOrEmail}
+                </p>
               )}
             </div>
 
@@ -127,7 +140,9 @@ const Login = () => {
                   type="password"
                   value={formData.password}
                   onChange={handleChange}
-                  className={`block w-full pl-10 pr-3 py-2 border ${errors.password ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}
+                  className={`block w-full pl-10 pr-3 py-2 border ${
+                    errors.password ? "border-red-500" : "border-gray-300"
+                  } rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}
                   placeholder="••••••••"
                 />
               </div>

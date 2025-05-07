@@ -81,6 +81,23 @@ userRouter.post('/login', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+
+userRouter.get('/profile', authenticateToken, async (req, res) => {
+  try {
+    const userId = req.user.id; // extract user ID from JWT payload
+
+    const foundUser = await user.findById(userId).select('-password'); // exclude password from response
+    if (!foundUser) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.status(200).json({ user: foundUser });
+  } catch (error) {
+    console.error('Profile fetch error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
 userRouter.put('/update', authenticateToken, async (req, res) => {
   const { userId, username, bio, profilePic, github, leetcode, linkedin } = req.body;
 
