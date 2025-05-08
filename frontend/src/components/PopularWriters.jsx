@@ -26,7 +26,7 @@ const PopularWriters = () => {
       name: "Vansh Saraf",
       bio: "Backend engineer with expertise in Python, Django, and database optimization.",
       image:
-        "https://media.licdn.com/dms/image/v2/D4D03AQFcKx0-YiHvWA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1698509160876?e=1752105600&v=beta&t=qoeN95RcNgA-wc2XzNmK4VLfDLd1Fm6C0eE1O9WHzlU",
+        "https://media.licdn.com/dms/image/v2/D5603AQHuAdkipMbVnA/profile-displayphoto-shrink_800_800/B56ZVBDY3oGQAg-/0/1740553162768?e=1752105600&v=beta&t=mxcvc-i9-ShAliXIqGEymDLWa8dOIek5KRLU1qznqn0",
       profileLink: "/writers/alicejohnson",
       expertise: ["Python", "Django", "SQL"],
     },
