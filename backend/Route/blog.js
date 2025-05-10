@@ -8,7 +8,7 @@ const blogRouter = express.Router();
 blogRouter.post('/create', authenticateToken, async (req, res) => {
   try {
     const { title, content, category} = req.body;
-    console.log(req.body);
+    // console.log(req.body);
     // Validate only title, content, and category
     if (!title || !content || !category) {
       return res.status(400).json({ message: 'Title, content, and category are required' });

@@ -1,11 +1,19 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
+
 const querySchema = new Schema(
   {
     title: { type: String, required: true },
     description: { type: String, required: true },
     askedBy: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-    tags: [{ type: String }], 
+    tags: [{ type: String }],
+
+    department: { type: String, required: true }, // e.g., 'Computer Science'
+    year: { type: String, required: true },       // e.g., '4th Year'
+    isAnonymous: { type: Boolean, default: false },
+
+    upvotes: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    
     responses: [
       {
         user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
@@ -13,11 +21,9 @@ const querySchema = new Schema(
         createdAt: { type: Date, default: Date.now },
       },
     ],
-    upvotes: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }], 
-    createdAt: { type: Date, default: Date.now },
   },
   { timestamps: true }
 );
 
-const query = mongoose.model('query' , querySchema);
-export default query;
+const Query = mongoose.model('Query', querySchema);
+export default Query;
